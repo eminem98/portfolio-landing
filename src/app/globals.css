@@ -1,19 +1,98 @@
 @tailwind base;
-@tailwind components;   /* puoi tenerlo, in v3 esiste ancora */
+@tailwind components;
 @tailwind utilities;
 
-html { scroll-behavior: smooth; }
-
-.animate-fadeInUp { @apply animate-fade-in-up; }
-
-/* Variabili tema */
-:root { --background:#fff; --foreground:#171717; }
-@media (prefers-color-scheme: dark) {
-  :root { --background:#0a0a0a; --foreground:#ededed; }
+:root {
+  --brand: #3b82f6; /* Blue-500 da Tailwind */
+  --brand-dark: #2563eb; /* Blue-600 da Tailwind */
+  --light: #f8fafc; /* Slate-50 da Tailwind */
+  --dark: #0f172a; /* Slate-900 da Tailwind */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply text-slate-800 dark:text-slate-200;
+}
+
+/* Grid background per Hero section */
+.grid-bg {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(128, 128, 128, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(128, 128, 128, 0.1) 1px, transparent 1px);
+}
+
+/* Animazione del saluto con la mano */
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(20deg); }
+}
+
+.animate-wave {
+  animation: wave 2s infinite;
+}
+
+/* Personalizzazione tema colori */
+.text-brand {
+  color: var(--brand);
+}
+
+.bg-brand {
+  background-color: var(--brand);
+}
+
+.bg-brand-dark {
+  background-color: var(--brand-dark);
+}
+
+.bg-light {
+  background-color: var(--light);
+}
+
+.bg-dark {
+  background-color: var(--dark);
+}
+
+.border-brand {
+  border-color: var(--brand);
+}
+
+.hover\:bg-brand-dark:hover {
+  background-color: var(--brand-dark);
+}
+
+.hover\:text-brand:hover {
+  color: var(--brand);
+}
+
+.hover\:border-brand:hover {
+  border-color: var(--brand);
+}
+
+/* Personalizzazione scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #999;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles per accessibilità */
+*:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
 }
